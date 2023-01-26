@@ -6,10 +6,10 @@ from PIL import Image
 import os
 
 
-app = Flask(__name__, template_folder='template', static_folder='static')
+app = Flask(__name__, template_folder='web/template', static_folder='web/static')
 
 #definig upload folder path
-UPLOAD_FOLDER = 'static'
+UPLOAD_FOLDER = 'web/static/predicted_image'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 #Secret key to enable session
@@ -32,12 +32,12 @@ def home():
 def objectLocalization():
     #get and save image
     imagefile = request.files['imagefile']
-    path = os.path.join('image_temp', imagefile.filename)
+    path = os.path.join('web/static/image_temp', imagefile.filename)
     imagefile.save(path)
 
     #read image and predict
     image = cv.imread(path)
-    print(type(image))
+    # print(type(image))
     image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
     image = cv.resize(image, (224, 224))
 
@@ -74,7 +74,9 @@ def objectLocalization():
                     'confidence_value': '{percent:.0%}'.format(percent=confidence_value),
                     }
     
-    return render_template('interface.html', predicted_image = show_image)
+    return render_template('interface.html')
+
+    #use return render_template(interface.html, predicted_image = show_image)  is an another option if static folder not inside another folder
 
 # @app.route('/show_predicted_image', methods = ['GET'])
 # def show_predicted_image():

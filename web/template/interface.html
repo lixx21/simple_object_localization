@@ -14,7 +14,8 @@
         </form>
 
         <div class="text-center">
-            <img src="{{ predicted_image }}" class="rounded pt-5">
+            <img src="{{ url_for('static', filename='predicted_image/predicted_image.jpg') }}" onerror="this.style.display='none'" class="rounded pt-5">
+            <!-- use <img src="{{ predicted_image}}" class="rounded pt-5"> is an another option if static folder not inside another folder -->
           </div>
         
         <!-- <form method="GET" action="/show_predicted_image">
