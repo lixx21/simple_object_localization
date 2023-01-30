@@ -5,7 +5,6 @@ from flask import Flask, render_template, request, jsonify, session
 from PIL import Image
 import os
 
-
 app = Flask(__name__, template_folder='web/template', static_folder='web/static')
 
 #definig upload folder path
