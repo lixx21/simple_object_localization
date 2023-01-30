@@ -16,9 +16,6 @@
 ![image](https://user-images.githubusercontent.com/91602612/215397616-6f14fd0d-ed89-4878-b91e-f40e4ac3a818.png)
 
 2. Then I read all xml files to extract label, xmin, ymin, xmax, and ymax from those xml files and append them into list. I encode the categorical value into numerical value **{"cucumber": 0, "eggplant": 1, "mushroom": 2}**, I also read all image files and append the image into list
-
 3. I used ```np.array()``` to convert the lists of image files and outputs (contains label, xmin, ymin, xmax, and ymax)
-
 4. Then I split inputs and outputs array into x_train, x_test, y_train, and y_test, using ```sklearn.model_selection.train_test_split()``` with parameters as follows **test_size = 0.3 and random_state = 42)**
-
 5. Because y_train and y_test has 5 values contains (label, xmin, ymin, xmax, and ymax) I seperate label with other values (coordinate xmin, ymin, xmax, and ymax to build the bounding box) because our model will have 2 outputs (labels and bounding box coordinate) and 1 input (image array)
